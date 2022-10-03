@@ -1,0 +1,162 @@
+/* ============
+    Variables
+================ */
+
+:root{
+    --blue: hsl(228,80%,50%);
+    --white: hsl(0,0%,100%);
+    --black: hsl(0,0%,0%);
+    --black-90: hsl(0,0%,10%);
+    --black-70: hsl(0,0%,30%);
+    --black-alpha-40: hsla(0,0%,0%,0.4);
+    --cian: hsl(182,81%,50%);
+    --purple: hsl(280,100%,41%);
+    --cian-dark: hsl(174,100%,38%);
+    --blue-light: hsl(231,100%,63%);
+    --magenta: hsl(291,100%,32%);
+    --pink: hsl(284,100%,92%);
+}
+
+/* ============
+    plantilla
+================ */
+body{
+    background-color: var(--body-bg-color);
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--black-70);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+a{
+    color: var(--main-color);
+    text-decoration: none;
+}
+
+a:hover{
+    color: var(--main-color);
+}
+
+img{
+    max-width: 100%;
+}
+
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+::selection{
+    color: var(--white);
+    background-color: var(--main-color);
+}
+
+h1{
+    font-weight: 700;
+    color: var(--purple);
+}
+
+.split-screen{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+
+
+
+.left h4{
+    font-weight: 600;
+    color: var(--white);
+    background-color: var(--purple);
+    width: 150px;
+}
+
+.left p{
+    color: var(--white);
+    background-color: var(--blue-light);
+    width: auto;
+    padding: 0 15px;
+    border-radius: 10px;
+}
+
+.left, .right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.left{
+    height: 200px;
+    background: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.5)), url('/img/imgEdit.webp');
+    background-size: cover;
+    text-align: center;
+}
+
+.right .form-horizontal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+}
+.right{
+    background: var(--white);
+}
+
+.right h3{
+    margin-top: 20px;
+}
+
+.right .form-group{
+    display: flex;
+    flex-direction: column;    
+    align-items: center;
+    width: 90%;
+}
+
+
+.right .form-group .control-label{
+    margin: 15px auto;
+    text-align: center;
+    width: max-content;
+    margin-left: 10%;
+    font-weight: 500;
+}
+
+.right .form-group .form-control{
+    width: 100%;
+    color: var(--black-90) !important;
+}
+
+.row-save{
+    justify-content:flex-start;
+    align-items: center;
+    margin: 25px auto;
+}
+
+.row-save .btn-save{
+    color: var(--purple);
+    background: var(--cian);
+}
+
+.row-save .btn-save:hover{
+    color: var(--purple);
+    background: var(--pink);
+}
+
+@media screen and (min-width: 900px) {
+    .split-screen{
+        flex-direction: row !important;
+        height: 100vp;
+    }
+
+    .left, .right{
+        display: flex;
+        width: 50%;
+        height: auto;
+    }
+}
