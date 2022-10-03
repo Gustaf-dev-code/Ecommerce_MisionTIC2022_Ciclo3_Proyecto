@@ -1,5 +1,6 @@
 package com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,11 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void delete(Integer id) {
         productRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Product> findAll() {
+        return productRepository.findAll();
     }
     
 }
