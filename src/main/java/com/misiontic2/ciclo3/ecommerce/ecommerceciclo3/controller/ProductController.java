@@ -48,12 +48,19 @@ public class ProductController {
     }
 
     @GetMapping("/edit/{id}")
-    public String edit(@PathVariable Integer id) {//PathVariable mapea el id que recibe el método y la pasa a la variable contigua de @PathVariable
+    public String edit(@PathVariable Integer id, Model model) {//PathVariable mapea el id que recibe el método y la pasa a la variable contigua de @PathVariable
         Product product = new Product();
         Optional<Product> optionalProduct = productService.get(id);
         product = optionalProduct.get();
 
         LOGGER.info("Producto buscado: {}", product);
+        model.addAttribute("producto",product);
         return "products/edit";
+    }
+
+    @PostMapping("/update")
+    public String update(Product product){
+        productService.update(product);
+        return "redirect:/products";
     }
 }
