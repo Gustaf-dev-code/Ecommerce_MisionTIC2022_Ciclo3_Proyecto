@@ -2,14 +2,35 @@ package com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "orders")
 public class Order {
     
+    //Mapeo
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     //Atributos
     private Integer id;
     private String numero;
     private Date fechaCreacion;
     private Date fechaRecibida;
     private Double total;
+
+    //--
+    @ManyToOne
+    private User user;
+
+    @OneToOne(mappedBy = "order")
+    private OrderDetail detail;
 
     //Constructor
 
@@ -66,12 +87,33 @@ public class Order {
         this.total = total;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+    
+    public OrderDetail getDetail() {
+        return detail;
+    }
+
+    public void setDetail(OrderDetail detail) {
+        this.detail = detail;
+    }
+
+
     //Métodos	
     @Override
     public String toString() {
         return "Orden [id=" + id + ", numero=" + numero + ", fechaCreacion=" + fechaCreacion + ", fechaRecibida="
                 + fechaRecibida + ", total=" + total + "]";
     }
+
+    
+
+    
 
     
     

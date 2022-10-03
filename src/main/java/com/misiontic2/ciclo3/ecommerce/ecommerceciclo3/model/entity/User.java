@@ -1,7 +1,21 @@
 package com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity;
 
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "users")
 public class User {
     
+    //Mapeo
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //Campo autocremental
     //Atributos
     private Integer id;
     private String nombre;
@@ -11,6 +25,31 @@ public class User {
     private String telefono;
     private String rol;
     private String password;
+
+    //-- Mapeo Entre usuario y producto
+    @OneToMany(mappedBy = "user")
+    private List<Product> products;
+
+    @OneToMany(mappedBy = "user")
+    private List<Order> orders;
+
+    //Constructor
+
+    public User(){
+        
+    }
+
+    public User(Integer id, String nombre, String username, String email, String direccion, String telefono,
+            String rol, String password) {
+        this.id = id;
+        this.nombre = nombre;
+        this.username = username;
+        this.email = email;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.rol = rol;
+        this.password = password;
+    }
 
     //Getters and Setters
     public Integer getId() {
@@ -62,23 +101,14 @@ public class User {
         this.password = password;
     }
 
-    //Constructor
-
-    public User(){
-        
+    public List<Product> getProducts() {
+        return products;
+    }
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 
-    public User(Integer id, String nombre, String username, String email, String direccion, String telefono,
-            String rol, String password) {
-        this.id = id;
-        this.nombre = nombre;
-        this.username = username;
-        this.email = email;
-        this.direccion = direccion;
-        this.telefono = telefono;
-        this.rol = rol;
-        this.password = password;
-    }
+    
 
     //Métodos
     @Override
@@ -86,6 +116,7 @@ public class User {
         return "User [id=" + id + ", nombre=" + nombre + ", username=" + username + ", email=" + email + ", direccion="
                 + direccion + ", telefono=" + telefono + ", rol=" + rol + ", password=" + password + "]";
     }
+   
 
     
     

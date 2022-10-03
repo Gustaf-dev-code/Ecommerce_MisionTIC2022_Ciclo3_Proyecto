@@ -1,6 +1,20 @@
 package com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "details")
 public class OrderDetail {
+
+    //Mapeo
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     
     //Atributos
     private Integer id;
@@ -8,6 +22,13 @@ public class OrderDetail {
     private double cantidad;
     private double precio;
     private double total;
+
+    //--
+    @OneToOne
+    private Order order;
+
+    @ManyToOne
+    private Product product;
 
     //Constructor
 
@@ -62,6 +83,22 @@ public class OrderDetail {
 
     public void setTotal(double total) {
         this.total = total;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     //Métodos

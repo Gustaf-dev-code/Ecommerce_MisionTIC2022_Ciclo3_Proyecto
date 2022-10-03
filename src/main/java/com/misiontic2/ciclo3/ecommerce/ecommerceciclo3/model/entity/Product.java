@@ -1,7 +1,20 @@
 package com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "products")
 public class Product {
     
+    //Mapeo
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     //Atributos
     private Integer id;
     private String nombre;
@@ -9,6 +22,10 @@ public class Product {
     private String imagen;
     private double precio;
     private int cantidad;
+
+    //-- Relación con la entidad usuario
+    @ManyToOne
+    private User user;
 
     //Constructor
 
@@ -23,6 +40,18 @@ public class Product {
         this.imagen = imagen;
         this.precio = precio;
         this.cantidad = cantidad;
+    }
+
+    
+    public Product(Integer id, String nombre, String descripcion, String imagen, double precio, int cantidad,
+            User user) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.imagen = imagen;
+        this.precio = precio;
+        this.cantidad = cantidad;
+        this.user = user;
     }
 
     //Getters and Setters
@@ -74,12 +103,22 @@ public class Product {
         this.cantidad = cantidad;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     //Métodos
     @Override
     public String toString() {
         return "Product [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", imagen=" + imagen
                 + ", precio=" + precio + ", cantidad=" + cantidad + "]";
     }
+
+    
 
     
 
