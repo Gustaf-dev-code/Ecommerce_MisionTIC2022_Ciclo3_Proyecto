@@ -1,11 +1,11 @@
 <!-- Header -->
 <div th:fragment = "header">
     <!-- Navbar -->
-<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+<nav class="sticky-top navbar navbar-expand-lg navbar-light bg-light">
     <!-- Container wrapper -->
     <div class="container">
       <!-- Navbar brand -->
-      <a class="navbar-brand me-2" href="#">
+      <a class="navbar-brand me-2" th:href="@{/admin}">
         <span>TECH</span>PATH
       </a>
   
@@ -27,7 +27,7 @@
         <!-- Left links -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link" th:href="@{/products}">Productos</a>
           </li>
         </ul>
   

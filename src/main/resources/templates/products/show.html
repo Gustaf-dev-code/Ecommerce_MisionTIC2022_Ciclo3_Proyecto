@@ -17,6 +17,8 @@
   <link rel="stylesheet" th:href="@{css/font-awesome.css}">
   <link th:href="@{css/mdb.dark.min.css}" rel="stylesheet">
   <link th:href="@{css/home.css}" rel="stylesheet">
+  <link th:href="@{/css/create.css}" rel="stylesheet">
+
 
   <link
       rel="stylesheet"
@@ -29,7 +31,7 @@
 <body>
 
  <!-- Navbar -->
-<div th:include="admin/template_admin.html::header"></div>
+<div class="sticky-top" th:include="admin/template_admin.html::header"></div>
 <!-- End Navbar -->
 
 <!-- Page Content -->
@@ -42,11 +44,11 @@
   </h1>
 
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="admin/home.html">Home</a></li>
+    <li class="breadcrumb-item"><a th:href="@{/admin}">Home</a></li>
     <li class="breadcrumb-item active">Productos</li>
   </ol>
 
-  <a class="btn btn-primary" href="#" > Crear Producto</a>
+  <a class="btn btn-primary" th:href="@{/products/create}" > Crear Producto</a>
   <h2>Productos</h2>
   <table class="table">
     <thead>
