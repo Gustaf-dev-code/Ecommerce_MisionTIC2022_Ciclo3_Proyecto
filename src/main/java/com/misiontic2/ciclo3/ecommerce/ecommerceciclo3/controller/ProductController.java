@@ -1,6 +1,7 @@
 package com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.controller;
 
 
+import java.io.IOException;
 import java.util.Optional;
 
 import org.slf4j.*;
@@ -11,10 +12,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.Product;
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.User;
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.service.ProductService;
+import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.service.UploadFileService;
 
 @Controller
 @RequestMapping("/products")
@@ -25,6 +29,9 @@ public class ProductController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private UploadFileService upload;
     
     //Métodos
     @GetMapping("")
@@ -39,10 +46,16 @@ public class ProductController {
     }
 
     @PostMapping("/save")
-    public String save(Product product){
+    public String save(Product product, @RequestParam("img") MultipartFile file) throws IOException{
         LOGGER.info("Este es el objeto producto {}",product);
         User user = new User(1, "", "", "", "", "", "", "null");
         product.setUser(user);
+
+        //Imagen
+        if(product.getId()==null){//Cuando se crea un producto
+            String nombreImagen = upload.saveImage(file);
+            product.setImagen(nombreImagen);
+        }
         productService.save(product);
         return "redirect:/products";
     }
@@ -59,13 +72,37 @@ public class ProductController {
     }
 
     @PostMapping("/update")
-    public String update(Product product){
+    public String update(Product product, @RequestParam("img") MultipartFile file) throws IOException{
+        if(file.isEmpty()){//Cuando editamos el producto sin actualizar la imagen
+            Product prod = new Product();
+            prod = productService.get(product.getId()).get();
+            product.setImagen(prod.getImagen());
+        }else{//Cuando se actualiza la imagen
+            Product produ = new Product();
+            produ = productService.get(product.getId()).get();
+
+            //Eliminar cuando la imagen no esta por defecto
+            if (!produ.getImagen().equals("defaut.jpg")) {
+            upload.deleteImage(produ.getImagen());
+        }
+            String nombreImagen = upload.saveImage(file);
+            product.setImagen(nombreImagen);
+        }
         productService.update(product);
         return "redirect:/products";
     }
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable Integer id){
+
+        Product produ = new Product();
+        produ = productService.get(id).get();
+
+        //Eliminar cuando la imagen no esta por defecto
+        if (produ.getImagen().equals("defaut.jpg")) {
+            upload.deleteImage(produ.getImagen());
+        }
+
         productService.delete(id);
         return "redirect:/products";
     }
