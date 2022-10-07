@@ -135,6 +135,11 @@ ul{
     border-radius: 15px;
 }
 
+.card-img-left{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .list-group-item{
     color: var(--white);
