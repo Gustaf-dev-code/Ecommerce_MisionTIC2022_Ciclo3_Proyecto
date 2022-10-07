@@ -28,101 +28,7 @@
 
 <body>
 <!-- Navbar -->
-<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
-  <!-- Container wrapper -->
-  <div class="container">
-    <!-- Navbar brand -->
-    <a class="navbar-brand me-2" href="#">
-      <span>TECH</span>PATH
-    </a>
-
-    <!-- Toggle button -->
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-mdb-toggle="collapse"
-      data-mdb-target="#navbarButtonsExample"
-      aria-controls="navbarButtonsExample"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <i class="fas fa-bars"></i>
-    </button>
-
-    <!-- Collapsible wrapper -->
-    <div class="collapse navbar-collapse" id="navbarButtonsExample">
-      <!-- Left links -->
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Home</a>
-        </li>
-      </ul>
-
-       <!-- Search form -->
-       <form class="input-group w-auto my-auto d-none d-sm-flex">
-        <input
-          autocomplete="off"
-          type="search"
-          class="form-control rounded"
-          placeholder="Search"
-          style="min-width: 50px;"
-        />
-        <span class="input-group-text border-0 d-none d-lg-flex"
-          ><i class="fas fa-search"></i></span>
-      </form>
-      <!-- Left links -->
-
-      <div class="d-flex align-items-center id="navbarButtonsExample"">
-        <button type="button" class="btn-login btn px-3 me-2">
-          Iniciar sesión
-        </button>
-        <button type="button" class="btn-signUp btn btn-primary me-3">
-          Registrarse
-        </button>
-      <!-- Icon -->
-      <a class="link-secondary me-3" href="#">
-        <i class="fas fa-shopping-cart"></i>
-        <span class="badge rounded-pill badge-notification bg-danger">0</span>
-      </a>
-      <!-- Avatar -->
-      <div class=" avatar dropdown">
-        <a
-          class="dropdown-toggle d-flex align-items-center hidden-arrow"
-          href="#"
-          id="navbarDropdownMenuAvatar"
-          role="button"
-          data-mdb-toggle="dropdown"
-          aria-expanded="false"
-        >
-          <img
-            src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
-            class="rounded-circle"
-            height="25"
-            alt="Black and White Portrait of a Man"
-            loading="lazy"
-          />
-        </a>
-        <ul
-          class="dropdown-menu dropdown-menu-end"
-          aria-labelledby="navbarDropdownMenuAvatar"
-        >
-          <li>
-            <a class="dropdown-item" href="#">My profile</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">Settings</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">Logout</a>
-          </li>
-        </ul>
-      </div>  
-      </div>
-    </div>
-    <!-- Collapsible wrapper -->
-  </div>
-  <!-- Container wrapper -->
-</nav>
+<div class="sticky-top" th:include="user/template_user.html::header"></div>
 <!-- End Navbar -->
     <!-- Page Content -->
     <div class="container">
@@ -210,7 +116,7 @@
     <!-- /.container -->
 
     <!-- Footer -->
-    <div th:include="admin/template_admin.html::footer"></div>
+    <div th:include="user/template_user.html::footer"></div>
 
     <!-- Bootstrap core JavaScript -->
     <script th:src="@{js/main.js}"></script>
