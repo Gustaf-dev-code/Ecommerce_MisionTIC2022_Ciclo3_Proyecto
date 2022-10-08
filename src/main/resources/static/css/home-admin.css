@@ -1,0 +1,146 @@
+/* ============
+    Variables
+================ */
+
+:root{
+    --blue: hsl(228,80%,50%);
+    --white: hsl(0,0%,100%);
+    --black: hsl(0,0%,0%);
+    --black-90: hsl(0,0%,10%);
+    --black-70: hsl(0,0%,30%);
+    --black-alpha-40: hsla(0,0%,0%,0.4);
+    --cian: hsl(182,81%,50%);
+    --purple: hsl(280,100%,41%);
+    --cian-dark: hsl(174,100%,38%);
+    --blue-light: hsl(231,100%,63%);
+    --magenta: hsl(291,100%,32%);
+    --pink: hsl(284,100%,92%);
+}
+
+/* ============
+    plantilla
+================ */
+body{
+    background-color: var(--body-bg-color);
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--black-70);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+a{
+    color: var(--main-color);
+    text-decoration: none;
+}
+
+a:hover{
+    color: var(--main-color);
+}
+
+img{
+    max-width: 100%;
+}
+
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+::selection{
+    color: var(--white);
+    background-color: var(--main-color);
+}
+
+/* ============
+    Navbar
+================ */
+
+.navbar{
+    border-bottom: 1px solid var(--white);
+}
+
+.navbar-brand{
+    font-size: 26px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--blue) !important;
+}
+
+.navbar-brand span{
+    color: var(--magenta);
+}
+
+
+.nav-item .nav-link{
+    margin-left: 20px;
+    font-weight: 600 !important;
+    color: var(--black-90);
+    transition: color 0.3s ease;
+}
+
+.nav-item .nav-link:hover{
+    font-weight: 600 !important;
+    color: var(--purple) !important;
+    border-bottom: 3px solid var(--purple);
+    padding-bottom: 0;
+}
+
+
+.btn-login{
+    background-color: var(--pink);
+    border-style:none;
+    color: var(--magenta);
+    margin-right: 15px;
+    display:none;
+}
+
+.btn-login:hover{
+    background-color: var(--magenta);
+    border-style:none;
+    color: var(--white);    
+    transition: color 0.3s ease;
+}
+
+.btn-signUp{
+    background-color: var(--blue);
+    border-style:none;
+    color: var(--white);
+    display: none;
+}
+
+.btn-signUp:hover{
+    background-color: var(--white);
+    border: 1px solid var(--blue);
+    color: var(--blue);    
+    transition: color 0.3s ease;
+}
+
+.icon-cart{
+    display:none;
+}
+
+/* ============
+    Header
+================ */
+.carousel-item >img{
+    max-height: 565px !important;
+}
+
+/* ============
+    Main
+================ */
+.card-footer > a{
+    background-color: var(--purple);
+    color: var(--white);
+    box-shadow:none;
+}
+
+.card-footer > a:hover{
+    background-color: var(--pink);
+    border: 1px solid var(--purple);
+    color: var(--purple);    
+    transition: color 0.3s ease;
+}

@@ -36,12 +36,24 @@
           <input
             autocomplete="off"
             type="search"
+            aria-label="Search"
             class="form-control rounded"
-            placeholder="Search"
-            style="min-width: 50px;"
+            placeholder="Buscar"
+            name="nombreBusqueda"
+            style="min-width: 50px; color: var(--blue)"
           />
-          <span class="input-group-text border-0 d-none d-lg-flex"
-            ><i class="fas fa-search"></i></span>
+          <button type="submit" 
+                  class="btn btn-floating"
+                  style="display: flex;
+                         padding: 0;
+                         margin-right: 40px;
+                         align-items:center;
+                         justify-content:center;
+                         text-align:center;
+                         background-color: var(--purple);"
+                  >
+            <span class="input-group-text border-0 d-none d-lg-flex" 
+            ><i class="fas fa-search" style="color: var(--white)"></i></span>
         </form>
         <!-- Left links -->
   
@@ -53,9 +65,8 @@
             Registrarse
           </button>
         <!-- Icon -->
-        <a class="link-secondary me-3" href="#">
+        <a class="icon-cart link-secondary me-3" href="#">
           <i class="fas fa-shopping-cart"></i>
-          <span class="badge rounded-pill badge-notification bg-danger">0</span>
         </a>
         <!-- Avatar -->
         <div class=" avatar dropdown">
@@ -79,12 +90,6 @@
             class="dropdown-menu dropdown-menu-end"
             aria-labelledby="navbarDropdownMenuAvatar"
           >
-            <li>
-              <a class="dropdown-item" href="#">My profile</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">Settings</a>
-            </li>
             <li>
               <a class="dropdown-item" href="#">Logout</a>
             </li>
