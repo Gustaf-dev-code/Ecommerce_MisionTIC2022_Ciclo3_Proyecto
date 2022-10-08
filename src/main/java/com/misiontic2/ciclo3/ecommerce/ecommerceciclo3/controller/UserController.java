@@ -1,5 +1,6 @@
 package com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
@@ -13,7 +14,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.Order;
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.User;
+import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.service.IOrderService;
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.service.IUserService;
 
 @Controller
@@ -26,6 +29,9 @@ public class UserController {
 
     @Autowired
     private IUserService userService;
+
+    @Autowired
+    private IOrderService orderService;
 
     //Métodos
 
@@ -71,6 +77,11 @@ public class UserController {
     @GetMapping("/compras")
     public String obtenerCompras(Model model, HttpSession session){
         model.addAttribute("sesion", session.getAttribute("idusuario"));
+        User user = userService.findById(Integer.parseInt(session.getAttribute("idusuario").toString())).get();
+        List<Order> orders = orderService.findByUser(user);
+
+        model.addAttribute("orders", orders);
+
         return "user/compras";
     }
 }
