@@ -31,19 +31,19 @@
     <!-- Navbar -->
 <div class="sticky-top" th:include="admin/template_admin.html::header"></div>
 <!-- End Navbar -->
-
     <!-- Page Content -->
     <div class="container">
 
 
       <!-- Page Heading/Breadcrumbs -->
       <h1 class="mt-4 mb-3">
-        <small>Ordenes</small>
+        <small>Detalles Ordenes</small>
       </h1>
 
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
-        <li class="breadcrumb-item active">Ordenes</li>
+        <li class="breadcrumb-item"><a th:href="@{/admin/orders}">Ordenes</a></li>
+        <li class="breadcrumb-item active">Detalle de Orden</li>
       </ol>
 
       <!-- Blog Post -->
@@ -54,22 +54,18 @@
             <table class="table">
               <thead>
                 <tr>
-                  <th scope="col"><h5 style="color: var(--cian); text-align:center">No. de Orden</h5></th>
-                  <th scope="col"><h5 style="color: var(--cian); text-align:center">Fecha</h5></th>
-                  <th scope="col"><h5 style="color: var(--cian); text-align:center">Valor</h5></th>
-                  <th scope="col"><h5 style="color: var(--cian); text-align:center">Acción</h5></th>
+                  <th scope="col"><h5 style="color: var(--cian); text-align:center">Cantidad</h5></th>
+                  <th scope="col"><h5 style="color: var(--cian); text-align:center">Producto</h5></th>                  
+                  <th scope="col"><h5 style="color: var(--cian); text-align:center">Precio</h5></th>
+                  <th scope="col"><h5 style="color: var(--cian); text-align:center">Total</h5></th>                  
                 </tr>
               </thead>
               <tbody>
-                <tr th:each="orden:${ordenes}">
-                  <td th:text="${orden.numero}" style="text-align:center"></td>
-                  <td th:text="${orden.fechaCreacion}" style="text-align:center"></td>
-                  <td th:text="${orden.total}" style="text-align:center"></td>
-                  <td><a th:href="@{/admin/ordersDetails/{id} (id=${orden.id})}" 
-                       class="btn btn-success" 
-                       style="display:flex;
-                              justify-content:center;
-                              align-items:center">Ver Detalle</a></td>
+                <tr th:each="detalleOrden:${detalles}">
+                  <td th:text="${detalleOrden.cantidad}" style="text-align:center"></td>
+                  <td th:text="${detalleOrden.nombre}" style="text-align:center"></td>
+                  <td th:text="${detalleOrden.precio}" style="text-align:center"></td>
+                  <td th:text="${detalleOrden.total}" style="text-align:center"></td>
                 </tr>
               </tbody>
             </table>
@@ -90,3 +86,4 @@
 </body>
 
 </html>
+
