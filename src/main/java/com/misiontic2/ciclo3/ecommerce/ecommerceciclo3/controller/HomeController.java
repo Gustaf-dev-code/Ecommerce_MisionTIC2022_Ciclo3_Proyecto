@@ -1,6 +1,8 @@
 package com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.controller;
 
+
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +21,8 @@ import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.Order;
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.OrderDetail;
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.Product;
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.User;
+import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.service.IOrderDetailService;
+import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.service.IOrderService;
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.service.IUserService;
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.service.ProductService;
 
@@ -34,6 +38,12 @@ public class HomeController {
 
     @Autowired
     private IUserService userService;
+
+    @Autowired
+    private IOrderService orderService;
+
+    @Autowired
+    private IOrderDetailService orderDetailService;
     
     //Almacena los detalles de la orden
     List<OrderDetail> details = new ArrayList<OrderDetail>();
@@ -137,5 +147,31 @@ public class HomeController {
         model.addAttribute("order", order);
         model.addAttribute("user", user);
         return "user/resumenorden";
+    }
+
+    @GetMapping("/saveOrder")
+    public String saveOrder(){
+        Date fechaCreacion = new Date();
+        order.setFechaCreacion(fechaCreacion);
+        order.setNumero(orderService.generarNumeroOrden());
+
+        //Obtener usuario
+        User user = userService.findById(1).get();
+
+        order.setUser(user);
+        orderService.save(order);
+
+        //Guardar detalles
+        for(OrderDetail dt:details){
+            dt.setOrder(order);
+            orderDetailService.save(dt);
+        }
+
+        //Limpiar valores de la lista y orden
+        order = new Order();
+        details.clear();
+
+
+        return "redirect:/";
     }
 }

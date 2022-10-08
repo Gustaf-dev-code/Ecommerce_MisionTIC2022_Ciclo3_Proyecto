@@ -7,7 +7,7 @@ import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.OrderDetail;
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.repositoryDAO.IOrderDetailRepository;
 
 @Service
-public class OrderDetailServiceImpl implements IOrerDetailService {
+public class OrderDetailServiceImpl implements IOrderDetailService {
 
     //Atributos
     @Autowired
