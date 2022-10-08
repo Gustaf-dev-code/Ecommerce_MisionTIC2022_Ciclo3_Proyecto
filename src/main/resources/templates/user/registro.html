@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es" xmls:th="http://www.thymeLeaf.org" > 
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>TECHPATH Ecommerce</title>
+
+
+  <!-- Bootstrap CSS -->
+  <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link rel="stylesheet" th:href="@{/css/font-awesome.css}">
+  <link th:href="@{/css/mdb.dark.min.css}" rel="stylesheet">
+  <link th:href="@{/css/registro.css}" rel="stylesheet">
+
+  <link
+      rel="stylesheet"
+      class="js-color-style"
+      href="/css/colors/color-1.css"
+    />
+
+</head>
+
+<body>
+<!-- Navbar -->
+<nav class="sticky-top navbar navbar-expand-lg navbar-light bg-light">
+  <!-- Container wrapper -->
+  <div class="container">
+    <!-- Navbar brand -->
+    <a class="navbar-brand me-2" th:href="@{/}">
+      <span>TECH</span>PATH
+    </a>
+
+    <!-- Toggle button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-mdb-toggle="collapse"
+      data-mdb-target="#navbarButtonsExample"
+      aria-controls="navbarButtonsExample"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
+    <!-- Left links -->
+  
+    <div class="d-flex align-items-center id="navbarButtonsExample"">
+      <button type="button" class="btn-login btn px-3 me-2">
+        Iniciar sesión
+      </button>
+    </div>
+    
+       
+</nav>
+<!-- End Navbar -->
+
+  <!-- Page Content -->
+<div class="container">
+
+
+  <!-- Page Heading -->
+  <h1 class="mt-4 mb-3">
+    <small>Registro de Usuario</small>
+  </h1>
+
+  <div class="split-screen">
+  <div class="left">
+    <h4>TECHPATH</h4>
+    <p>Todo lo que buscas en unos cuantos clicks.</p>
+  </div>
+  <div class="right">
+  <h3>Bienvenido!</h3>
+
+  <form class="form-horizontal" th:action="@{/user/save}" method="post">
+    
+    <div class="form-group">
+      <label class="control-label" for="nombres">Nombres:</label> <input type="text"
+        class="form-control" id="nombre" name="nombre" required
+        placeholder="Ingrese sus nombres" autocomplete="off">
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="email">Email:</label> <input type="email"
+        class="form-control" id="email" name="email" required
+        placeholder="Ingrese su email" autocomplete="off">
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="direccion">Dirección:</label> <input type="text"
+        class="form-control" id="direccion" name="direccion" required
+        placeholder="Ingrese su dirección" autocomplete="off">
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="pwd">Contraseña</label> <input type="password"
+        class="form-control" id="password" name="password" required placeholder="Ingrese su contraseña" autocomplete="off">
+    </div>
+
+    <div class="row row-save">
+      <div class="col-sm-2">
+        <button type="submit" class="btn btn-success btn-save">
+          <span class="glyphicon glyphicon-saved"></span> Guardar
+        </button>
+      </div>
+    </div>
+
+  </form>
+  </div> 
+  <!-- Right -->
+  </div>
+</div>
+<!-- /.container -->
+   <!-- Footer -->
+   <div th:include="user/template_user.html::footer"></div>
+
+   <!-- Bootstrap core JavaScript -->
+   <script th:src="@{/js/main.js}"></script>
+   <script th:src="@{/js/mdb.min.js}"></script>
+
+</body>
+
+</html>
