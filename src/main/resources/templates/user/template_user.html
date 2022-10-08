@@ -167,8 +167,11 @@
           class="dropdown-menu dropdown-menu-end"
           aria-labelledby="navbarDropdownMenuAvatar"
         >
+        <li class="dropdown-item disabled">
+          USER
+        </li>
           <li>
-            <a class="dropdown-item" href="#">Logout</a>
+            <a class="dropdown-item" th:href="@{/user/logout}">Cerrar Sesión</a>
           </li>
         </ul>
       </div>  
