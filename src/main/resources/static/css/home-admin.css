@@ -73,6 +73,10 @@ ul{
     color: var(--magenta);
 }
 
+.nav-item{
+    display: flex;
+    flex-direction: row;
+}
 
 .nav-item .nav-link{
     margin-left: 20px;

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.Product;
+import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.service.IUserService;
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.service.ProductService;
 
 @Controller
@@ -19,11 +20,21 @@ public class AdminController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private IUserService userService;
+
     @GetMapping("")
     public String home(Model model) {
 
         List<Product> productos = productService.findAll();
         model.addAttribute("productos", productos);
         return "admin/home";
+    }
+
+    @GetMapping("/users")
+    public String users(Model model){
+        model.addAttribute("usuarios", userService.findAll());
+
+        return "admin/usuarios";
     }
 }
