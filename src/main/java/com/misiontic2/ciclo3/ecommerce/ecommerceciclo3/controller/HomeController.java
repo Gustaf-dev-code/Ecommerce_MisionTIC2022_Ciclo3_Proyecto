@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.Order;
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.OrderDetail;
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.Product;
+import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.User;
+import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.service.IUserService;
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.service.ProductService;
 
 @Controller
@@ -29,6 +31,9 @@ public class HomeController {
 
     @Autowired //Inyecta al contenedor una instancia de tipo ProductService
     private ProductService productService;//Obtener los productos
+
+    @Autowired
+    private IUserService userService;
     
     //Almacena los detalles de la orden
     List<OrderDetail> details = new ArrayList<OrderDetail>();
@@ -124,7 +129,13 @@ public class HomeController {
     }
 
     @GetMapping("/order")
-    public String order(){
+    public String order(Model model){
+
+        User user = userService.findById(1).get();
+
+        model.addAttribute("cart", details);
+        model.addAttribute("order", order);
+        model.addAttribute("user", user);
         return "user/resumenorden";
     }
 }
