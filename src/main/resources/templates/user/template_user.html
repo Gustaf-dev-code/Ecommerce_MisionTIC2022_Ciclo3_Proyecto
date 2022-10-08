@@ -46,6 +46,7 @@
                   class="btn btn-floating"
                   style="display: flex;
                          padding: 0;
+                         margin-right: 40px;
                          align-items:center;
                          justify-content:center;
                          text-align:center;
@@ -59,12 +60,9 @@
         <!-- Left links -->
   
         <div class="d-flex align-items-center id="navbarButtonsExample"">
-          <button type="button" class="btn-login btn px-3 me-2">
-            Iniciar sesión
-          </button>
-          <button type="button" class="btn-signUp btn btn-primary me-3">
-            Registrarse
-          </button>
+            <!-- Botones de autenticación -->
+            <a class= "btn-login btn btn-primary" th:href="@{/user/login}" >Iniciar Sesión</a>
+            <a class= "btn-signUp btn btn-primary" th:href="@{/user/register}" >Registrarse</a>
         <!-- Icon -->
         <a class="link-secondary me-3 nav-link" th:href="@{/getCart}">
           <i class="fas fa-shopping-cart" style="color: var(--blue)"></i>

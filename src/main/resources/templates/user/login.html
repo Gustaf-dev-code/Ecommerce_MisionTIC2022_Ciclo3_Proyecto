@@ -16,7 +16,7 @@
   <!-- Custom styles for this template -->
   <link rel="stylesheet" th:href="@{/css/font-awesome.css}">
   <link th:href="@{/css/mdb.dark.min.css}" rel="stylesheet">
-  <link th:href="@{/css/registro.css}" rel="stylesheet">
+  <link th:href="@{/css/login.css}" rel="stylesheet">
 
   <link
       rel="stylesheet"
@@ -51,7 +51,7 @@
     <!-- Left links -->
   
     <div class="d-flex align-items-center id="navbarButtonsExample"">
-      <a class= "btn-login btn btn-primary" th:href="@{/user/login}" > Iniciar Sesión</a>
+        <a class= "btn-signUp btn btn-primary" th:href="@{/user/register}">Registrarse</a>
     </div>
     
        
@@ -64,35 +64,23 @@
 
   <!-- Page Heading -->
   <h1 class="mt-4 mb-3">
-    <small>Registro de Usuario</small>
+    <small>Iniciar Sesión</small>
   </h1>
 
   <div class="split-screen">
   <div class="left">
     <h4>TECHPATH</h4>
-    <p>Todo lo que buscas en unos cuantos clicks.</p>
+    <p>Nos encanta que volvieras.</p>
   </div>
   <div class="right">
-  <h3>Bienvenido!</h3>
+  <h3>Hola de nuevo!</h3>
 
-  <form class="form-horizontal" th:action="@{/user/save}" method="post">
-    
-    <div class="form-group">
-      <label class="control-label" for="nombres">Nombres:</label> <input type="text"
-        class="form-control" id="nombre" name="nombre" required
-        placeholder="Ingrese sus nombres" autocomplete="off">
-    </div>
+  <form class="form-horizontal" th:action="@{/user/acceder}" method="post">
 
     <div class="form-group">
       <label class="control-label" for="email">Email:</label> <input type="email"
         class="form-control" id="email" name="email" required
         placeholder="Ingrese su email" autocomplete="off">
-    </div>
-
-    <div class="form-group">
-      <label class="control-label" for="direccion">Dirección:</label> <input type="text"
-        class="form-control" id="direccion" name="direccion" required
-        placeholder="Ingrese su dirección" autocomplete="off">
     </div>
 
     <div class="form-group">
@@ -103,7 +91,7 @@
     <div class="row row-save">
       <div class="col-sm-2">
         <button type="submit" class="btn btn-success btn-save">
-          <span class="glyphicon glyphicon-saved"></span> Guardar
+          <span class="glyphicon glyphicon-saved"></span> Ingresar
         </button>
       </div>
     </div>

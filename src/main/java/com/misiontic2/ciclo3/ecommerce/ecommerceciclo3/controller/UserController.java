@@ -1,5 +1,9 @@
 package com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.controller;
 
+import java.util.Optional;
+
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +39,31 @@ public class UserController {
         logger.info("Usuario registro: {}", user);
         user.setRol("USER");
         userService.save(user);
+        return "redirect:/";
+    }
+
+    @GetMapping("/login")
+    public String login(){
+        return "user/login";
+    }
+
+    @PostMapping("/acceder")
+    public String acceder(User user, HttpSession session){
+        logger.info("Accesos: {}", user);
+        Optional<User> usuario = userService.findByEmail(user.getEmail());
+        //logger.info("Usuario de base de datos: {}", usuario.get());
+
+        if(usuario.isPresent()){
+            session.setAttribute("idusuario", usuario.get().getId());
+            if(usuario.get().getRol().equals("ADMIN")){
+                return "redirect:/admin";
+            }else{
+                return "redirect:/";
+            }
+        }else{
+            logger.info("Usuario no existente");
+        }
+
         return "redirect:/";
     }
 }

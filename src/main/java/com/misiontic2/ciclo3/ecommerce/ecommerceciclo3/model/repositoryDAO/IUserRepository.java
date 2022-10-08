@@ -10,6 +10,6 @@ import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.User;
 @Repository
 public interface IUserRepository extends JpaRepository<User, Integer>{
 
-    Optional<User> findById(Integer id);
+    Optional<User> findByEmail(String email);
     
 }

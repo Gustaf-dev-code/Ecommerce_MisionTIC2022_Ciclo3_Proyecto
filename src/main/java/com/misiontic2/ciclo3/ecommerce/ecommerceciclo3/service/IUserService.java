@@ -9,4 +9,5 @@ public interface IUserService {
     //Métodos
     Optional<User> findById(Integer id);
     User save (User user);
+    Optional<User> findByEmail(String email);
 }

@@ -93,7 +93,7 @@ ul{
     background-color: var(--pink);
     border-style:none;
     color: var(--magenta);
-    display: none;
+    margin-right: 15px;
 }
 
 .btn-login:hover{
@@ -107,7 +107,6 @@ ul{
     background-color: var(--blue);
     border-style:none;
     color: var(--white);
-    display: none;
 }
 
 .btn-signUp:hover{
