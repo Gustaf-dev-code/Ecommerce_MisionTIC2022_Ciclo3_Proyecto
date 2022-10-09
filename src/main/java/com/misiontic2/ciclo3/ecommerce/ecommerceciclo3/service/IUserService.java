@@ -3,13 +3,13 @@ package com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.User;
+import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.Usuario;
 
 public interface IUserService {
     
     //Métodos
-    List<User> findAll();
-    Optional<User> findById(Integer id);
-    User save (User user);
-    Optional<User> findByEmail(String email);
+    List<Usuario> findAll();
+    Optional<Usuario> findById(Integer id);
+    Usuario save (Usuario user);
+    Optional<Usuario> findByEmail(String email);
 }

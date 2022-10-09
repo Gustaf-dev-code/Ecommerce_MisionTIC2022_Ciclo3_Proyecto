@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.Order;
-import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.User;
+import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.Usuario;
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.service.IOrderService;
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.service.IUserService;
 
@@ -34,6 +34,7 @@ public class UserController {
     @Autowired
     private IOrderService orderService;
 
+
     //Métodos
 
     // /user/register
@@ -43,7 +44,7 @@ public class UserController {
     }
 
     @PostMapping("/save")
-    public String save(User user){
+    public String save(Usuario user){
         logger.info("Usuario registro: {}", user);
         user.setRol("USER");
         userService.save(user);
@@ -56,9 +57,9 @@ public class UserController {
     }
 
     @PostMapping("/acceder")
-    public String acceder(User user, HttpSession session){
+    public String acceder(Usuario user, HttpSession session){
         logger.info("Accesos: {}", user);
-        Optional<User> usuario = userService.findByEmail(user.getEmail());
+        Optional<Usuario> usuario = userService.findByEmail(user.getEmail());
         //logger.info("Usuario de base de datos: {}", usuario.get());
 
         if(usuario.isPresent()){
@@ -78,7 +79,7 @@ public class UserController {
     @GetMapping("/compras")
     public String obtenerCompras(Model model, HttpSession session){
         model.addAttribute("sesion", session.getAttribute("idusuario"));
-        User user = userService.findById(Integer.parseInt(session.getAttribute("idusuario").toString())).get();
+        Usuario user = userService.findById(Integer.parseInt(session.getAttribute("idusuario").toString())).get();
         List<Order> orders = orderService.findByUser(user);
 
         model.addAttribute("orders", orders);

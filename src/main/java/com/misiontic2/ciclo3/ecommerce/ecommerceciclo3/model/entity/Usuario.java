@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class Usuario {
     
     //Mapeo
     @Id
@@ -35,11 +35,11 @@ public class User {
 
     //Constructor
 
-    public User(){
+    public Usuario(){
         
     }
 
-    public User(Integer id, String nombre, String username, String email, String direccion, String telefono,
+    public Usuario(Integer id, String nombre, String username, String email, String direccion, String telefono,
             String rol, String password) {
         this.id = id;
         this.nombre = nombre;
@@ -116,6 +116,7 @@ public class User {
         return "User [id=" + id + ", nombre=" + nombre + ", username=" + username + ", email=" + email + ", direccion="
                 + direccion + ", telefono=" + telefono + ", rol=" + rol + ", password=" + password + "]";
     }
+
    
 
     

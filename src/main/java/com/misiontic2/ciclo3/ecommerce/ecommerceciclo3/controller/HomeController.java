@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.Order;
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.OrderDetail;
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.Product;
-import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.User;
+import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.Usuario;
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.service.IOrderDetailService;
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.service.IOrderService;
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.service.IUserService;
@@ -104,7 +104,7 @@ public class HomeController {
             details.add(orderDetail);
         }
 
-        
+          
 
         sumaTotal = details.stream().mapToDouble(dt->dt.getTotal()).sum();
         order.setTotal(sumaTotal);
@@ -154,7 +154,7 @@ public class HomeController {
     @GetMapping("/order")
     public String order(Model model, HttpSession session){
 
-        User user = userService.findById(Integer.parseInt(session.getAttribute("idusuario").toString())).get();
+        Usuario user = userService.findById(Integer.parseInt(session.getAttribute("idusuario").toString())).get();
 
         model.addAttribute("cart", details);
         model.addAttribute("order", order);
@@ -169,7 +169,7 @@ public class HomeController {
         order.setNumero(orderService.generarNumeroOrden());
 
         //Obtener usuario
-        User user = userService.findById(Integer.parseInt(session.getAttribute("idusuario").toString())).get();
+        Usuario user = userService.findById(Integer.parseInt(session.getAttribute("idusuario").toString())).get();
 
         order.setUser(user);
         orderService.save(order);

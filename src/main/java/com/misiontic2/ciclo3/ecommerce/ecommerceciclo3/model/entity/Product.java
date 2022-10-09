@@ -25,7 +25,7 @@ public class Product {
 
     //-- Relación con la entidad usuario
     @ManyToOne
-    private User user;
+    private Usuario user;
 
     //Constructor
 
@@ -44,7 +44,7 @@ public class Product {
 
     
     public Product(Integer id, String nombre, String descripcion, String imagen, double precio, int cantidad,
-            User user) {
+            Usuario user) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -103,11 +103,11 @@ public class Product {
         this.cantidad = cantidad;
     }
 
-    public User getUser() {
+    public Usuario getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Usuario user) {
         this.user = user;
     }
 
