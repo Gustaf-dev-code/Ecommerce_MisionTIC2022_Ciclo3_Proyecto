@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.Order;
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.OrderDetail;
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.Product;
-import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.User;
+import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.Usuario;
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.service.IOrderDetailService;
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.service.IOrderService;
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.service.IUserService;
@@ -68,22 +68,25 @@ public class HomeController {
     }
 
     @GetMapping("productHome/{id}")
-    public String productHome(@PathVariable Integer id, Model model){
+    public String productHome(@PathVariable Integer id, Model model, HttpSession session){
         log.info("Id producto enviado como parámetro {}", id);
         Product prod = new Product();
         Optional<Product> optionalProduct = productService.get(id);
         prod = optionalProduct.get();
         model.addAttribute("producto", prod);
+        //Sesión
+        model.addAttribute("sesion", session.getAttribute("idusuario"));
 
         return "user/productohome";
     }
 
     @PostMapping("/cart")
-    public String addCart(@RequestParam Integer id, @RequestParam Integer cantidad, Model model){
+    public String addCart(@RequestParam Integer id, @RequestParam Integer cantidad, Model model, HttpSession session){
         OrderDetail orderDetail = new OrderDetail();
         Product product = new Product();
         double sumaTotal = 0;
-
+        //Sesión
+        model.addAttribute("sesion", session.getAttribute("idusuario"));
         Optional<Product> optionalProduct = productService.get(id);
         log.info("Producto añadido: {}", optionalProduct.get());
         log.info("Cantidad: {}", cantidad);
@@ -102,7 +105,7 @@ public class HomeController {
             details.add(orderDetail);
         }
 
-        
+          
 
         sumaTotal = details.stream().mapToDouble(dt->dt.getTotal()).sum();
         order.setTotal(sumaTotal);
@@ -152,7 +155,7 @@ public class HomeController {
     @GetMapping("/order")
     public String order(Model model, HttpSession session){
 
-        User user = userService.findById(Integer.parseInt(session.getAttribute("idusuario").toString())).get();
+        Usuario user = userService.findById(Integer.parseInt(session.getAttribute("idusuario").toString())).get();
 
         model.addAttribute("cart", details);
         model.addAttribute("order", order);
@@ -167,7 +170,7 @@ public class HomeController {
         order.setNumero(orderService.generarNumeroOrden());
 
         //Obtener usuario
-        User user = userService.findById(Integer.parseInt(session.getAttribute("idusuario").toString())).get();
+        Usuario user = userService.findById(Integer.parseInt(session.getAttribute("idusuario").toString())).get();
 
         order.setUser(user);
         orderService.save(order);
@@ -187,10 +190,12 @@ public class HomeController {
     }
 
     @PostMapping("/search")
-    public String searchProduct(@RequestParam String nombreBusqueda, Model model){
+    public String searchProduct(@RequestParam String nombreBusqueda, Model model, HttpSession session){
         log.info("Nombre del producto: {}", nombreBusqueda);
         List<Product> products = productService.findAll().stream().filter(producto -> producto.getNombre().contains(nombreBusqueda)).collect(Collectors.toList());
         model.addAttribute("productos", products);
+        //Sesión
+        model.addAttribute("sesion", session.getAttribute("idusuario"));
         return "user/home";
     }
 }

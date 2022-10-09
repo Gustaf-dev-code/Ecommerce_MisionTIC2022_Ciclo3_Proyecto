@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.Order;
-import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.User;
+import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.Usuario;
 
 public interface IOrderService {
     
@@ -13,5 +13,5 @@ public interface IOrderService {
     Optional<Order> findById(Integer id);
     Order save (Order order);
     String generarNumeroOrden();
-    List<Order> findByUser(User user);
+    List<Order> findByUser(Usuario user);
 }

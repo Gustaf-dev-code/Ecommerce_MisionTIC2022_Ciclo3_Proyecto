@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.User;
+import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.Usuario;
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.repositoryDAO.IUserRepository;
 
 @Service
@@ -17,24 +17,24 @@ public class UserServiceImpl implements IUserService {
     private IUserRepository userRepository;
 
     @Override
-    public Optional<User> findById(Integer id) {
+    public Optional<Usuario> findById(Integer id) {
         
         return userRepository.findById(id);
     }
 
     @Override
-    public User save(User user) {
+    public Usuario save(Usuario user) {
         return userRepository.save(user);
     }
 
     @Override
-    public Optional<User> findByEmail(String email) {
+    public Optional<Usuario> findByEmail(String email) {
 
         return userRepository.findByEmail(email);
     }
 
     @Override
-    public List<User> findAll() {
+    public List<Usuario> findAll() {
         return userRepository.findAll();
     }
 

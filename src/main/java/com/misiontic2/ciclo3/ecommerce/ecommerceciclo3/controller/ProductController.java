@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.Product;
-import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.User;
+import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.model.entity.Usuario;
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.service.IUserService;
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.service.ProductService;
 import com.misiontic2.ciclo3.ecommerce.ecommerceciclo3.service.UploadFileService;
@@ -55,7 +55,7 @@ public class ProductController {
     public String save(Product product, @RequestParam("img") MultipartFile file, HttpSession session) throws IOException{
         LOGGER.info("Este es el objeto producto {}",product);
         
-        User user = userService.findById(Integer.parseInt(session.getAttribute("idusuario").toString())).get();
+        Usuario user = userService.findById(Integer.parseInt(session.getAttribute("idusuario").toString())).get();
         product.setUser(user);
 
         //Imagen
