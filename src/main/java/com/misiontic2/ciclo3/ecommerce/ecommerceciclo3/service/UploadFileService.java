@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class UploadFileService {
     
     //Atributos
-    private String folder="images//";
+    private String folder="src//main//resources//static/img";
 
 
     //Métodos
@@ -28,7 +28,7 @@ public class UploadFileService {
     }
 
     public void deleteImage(String nombre){
-        String ruta = "images//";
+        String ruta = "src//main//resources//static/img";
         File file = new File(ruta+nombre);
         file.delete();
     }
